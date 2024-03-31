@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>All Books Inventory</h2>
+  <a href="{% url 'books:book_add' %}">Add New Book</a>  <!-- Link to add a new book -->
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Authors</th>
+        <th>Original Language</th>
+        <th>First Published</th>
+        <th>Sales (millions)</th>
+        <th>Genre</th>
+        <th>Shelves</th>
+        <th>Number of Copies</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in books %}
+        <tr>
+          <td>{{ book.title }}</td>
+          <td>{{ book.authors }}</td>
+          <td>{{ book.original_language }}</td>
+          <td>{{ book.first_published }}</td>
+          <td>{{ book.sales_millions }}</td>
+          <td>{{ book.genre }}</td>
+          <td>{{ book.shelves }}</td>
+          <td>{{ book.number_of_books }}</td>
+          <td>{{ book.price }}</td>
+          <td>
+            <a href="{% url 'books:book_edit' book.id %}">Edit</a> |  <!-- Link to edit book; requires book_edit view -->
+            <a href="{% url 'books:book_delete' book.id %}">Delete</a>  <!-- Link to delete book; requires book_delete view -->
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="10">No books available.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a href="{% url 'books:post_login' %}">Back to options</a>  <!-- Link back to the main options page -->
+{% endblock %}

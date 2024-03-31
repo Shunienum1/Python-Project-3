@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ book.title }}</title>
+</head>
+<body>
+    <h2>{{ book.title }}</h2>
+    <p>Author: {{ book.authors }}</p>
+    <a href="{% url 'books:book_detail' book.id %}">{{ book.title }}</a>
+    <a href="{% url 'book_list' %}">Back to list</a>
+</body>
+</html>
+
