@@ -7,8 +7,9 @@
   <ul>
     <li><a href="{% url 'books:book_add' %}">Add a Book</a></li>
     <li><a href="{% url 'books:book_search' %}">Search Books</a></li>
-    <li><a href="{% url 'admin:index' %}">Admin Page</a>
+    <li><a href="/admin/">Admin Page</a></li>
     <li><a href="{% url 'books:book_list' %}">View Inventory</a></li>  <!-- Button to view all books -->
+      <li><a href="{% url 'books:inventory_summary' %}">View Inventory Summary</a></li>
     <li><a href="{% url 'logout' %}">Logout</a></li>
   </ul>
 {% endblock %}

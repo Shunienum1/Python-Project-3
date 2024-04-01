@@ -1,0 +1,13 @@
+<!-- templates/books/shelf_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Books on Shelf: {{ shelf }}</h1>
+  <p>Total Distinct Books: {{ distinct_books_count }}</p>
+  <ol>
+    {% for book in books %}
+      <li>{{ book.title }} by {{ book.authors }} - Copies: {{ book.total }}</li>
+    {% endfor %}
+  </ol>
+  <a href="{% url 'books:inventory_summary' %}">Back to Shelves</a>
+{% endblock %}

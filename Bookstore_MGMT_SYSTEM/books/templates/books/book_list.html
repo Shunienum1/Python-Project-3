@@ -6,6 +6,7 @@
   <table>
     <thead>
       <tr>
+        <th>#</th>  <!-- Added for row numbering -->
         <th>Title</th>
         <th>Authors</th>
         <th>Original Language</th>
@@ -21,6 +22,7 @@
     <tbody>
       {% for book in books %}
         <tr>
+          <td>{{ forloop.counter }}</td>  <!-- Row number -->
           <td>{{ book.title }}</td>
           <td>{{ book.authors }}</td>
           <td>{{ book.original_language }}</td>
@@ -31,17 +33,17 @@
           <td>{{ book.number_of_books }}</td>
           <td>{{ book.price }}</td>
           <td>
-            <a href="{% url 'books:book_edit' book.id %}">Edit</a> |  <!-- Link to edit book; requires book_edit view -->
-            <a href="{% url 'books:book_delete' book.id %}">Delete</a>  <!-- Link to delete book; requires book_delete view -->
+            <a href="{% url 'books:book_edit' book.id %}">Edit</a> | 
+            <a href="{% url 'books:book_delete' book.id %}">Delete</a>
           </td>
         </tr>
       {% empty %}
         <tr>
-          <td colspan="10">No books available.</td>
+          <td colspan="11">No books available.</td>  <!-- Updated colspan to 11 -->
         </tr>
       {% endfor %}
     </tbody>
   </table>
 
-  <a href="{% url 'books:post_login' %}">Back to options</a>  <!-- Link back to the main options page -->
+  <a href="{% url 'books:post_login' %}">Back to options</a>
 {% endblock %}

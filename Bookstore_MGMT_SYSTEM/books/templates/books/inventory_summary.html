@@ -1,0 +1,15 @@
+<!-- templates/books/inventory_summary.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Inventory Summary</h1>
+  <div>
+    <h2>Shelves</h2>
+    {% for shelf in shelves %}
+      <button onclick="location.href='{% url 'books:shelf_detail' shelf %}'">{{ shelf }}</button>
+    {% endfor %}
+  </div>
+        <br>
+  <a href="{% url 'books:post_login' %}">Back</a>
+
+{% endblock %}

@@ -125,3 +125,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'books:post_login'
 LOGOUT_REDIRECT_URL = 'login'
+SESSION_COOKIE_AGE = 300  # 5 minutes in seconds
