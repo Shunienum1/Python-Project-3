@@ -9,16 +9,16 @@
   </form>
 
   {% if books %}
-  <ul>
+  <ol>
     {% for book in books %}
     <li>
-      Title: {{ book.title }} <br>
-      Author: {{ book.authors }} <br>
-      Shelves Location: {{ book.shelves }}
-      Number of Books: {{ book.number_of_books }}
+        Title: {{ book.title }} <br>
+        Author: {{ book.authors }} <br>
+        Shelves Location: {{ book.shelves }} <br>
+        Number of Books: {{ book.number_of_books }}
     </li>
     {% endfor %}
-  </ul>
+  </ol>
   {% else %}
   <p>No books found.</p>
   {% endif %}

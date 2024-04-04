@@ -173,7 +173,7 @@ def shelf_detail(request, shelf):
     # and aggregate the sum of the 'number_of_books' for each distinct book.
     books = Book.objects.filter(shelves=shelf)\
                 .values('title', 'authors')\
-                .annotate(total=sum('number_of_books'))\
+                .annotate(total=Sum('number_of_books'))\
                 .order_by('title')
     # Get the count of distinct titles on the shelf
     distinct_books_count = books.count()
