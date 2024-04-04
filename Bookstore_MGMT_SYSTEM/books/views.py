@@ -165,15 +165,20 @@ def inventory_summary(request):
     shelves = Book.objects.values_list('shelves', flat=True).distinct()
     return render(request, 'books/inventory_summary.html', {'shelves': shelves})
 
+from django.db.models import Sum
+
 @login_required
 def shelf_detail(request, shelf):
     # Query the database for books on the specific shelf
-    # and annotate with the count of each distinct book.
-    books = Book.objects.filter(shelves=shelf).values('title', 'authors').annotate(total=Count('title')).order_by('title')
+    # and aggregate the sum of the 'number_of_books' for each distinct book.
+    books = Book.objects.filter(shelves=shelf)\
+                .values('title', 'authors')\
+                .annotate(total=sum('number_of_books'))\
+                .order_by('title')
     # Get the count of distinct titles on the shelf
     distinct_books_count = books.count()
     return render(request, 'books/shelf_detail.html', {
         'books': books,
         'shelf': shelf,
-        'distinct_books_count': distinct_books_count
+        'distinct_books_count': distinct_books_count,
     })
